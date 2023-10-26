@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,10 @@ Route::get('/about', function () {
 Route::get('/About', [AboutController::class, 'index']);
 
 Route::get('/', LandingController::class);
+
+Route::get('/transaction-us', [TransactionController::class, 'index']);
+
+Route::post('/transaction-us', [TransactionController::class, 'store']);
 
 Route::get('/about', function () {
     $title = 'About Us';
