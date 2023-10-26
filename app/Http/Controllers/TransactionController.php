@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\transaction;
+
 class TransactionController extends Controller
 {
     public function index()
@@ -17,7 +19,14 @@ class TransactionController extends Controller
             'category' => 'required|string|notNull|uncategorized',
             'notes' => 'requires|string|text',
         ]);
-        dump($validated);
-        return $request->all();
+        $transaction = new transaction();
+        $transaction->id= $validated['id'];
+        $transaction->amount= $validated['amount'];
+        $transaction->type= $validated['type'];
+        $transaction->category= $validated['category'];
+        $transaction->notes= $validated['notes'];
+        $transaction->save();
+
+        return redirect()->route('transaction-us.index')->with('Thank you, we will transaction you soon!');
     }
 }

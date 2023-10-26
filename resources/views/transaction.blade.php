@@ -15,6 +15,11 @@
         </div>
     @endif
 </div>
+@if (session()->has('success'))
+    <div class="alert alert-success mt-4">
+        {{ session()->get('success') }}
+    </div>
+@endif
 <div class="row my-5">
     <div class="col-6">
         <form action="" method="POST">

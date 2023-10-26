@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,11 @@ Route::get('/', LandingController::class);
 Route::get('/transaction-us', [TransactionController::class, 'index']);
 
 Route::post('/transaction-us', [TransactionController::class, 'store']);
+
+Route::get('/transaction-us', [TransactionController::class, 'index'])->name('transaction-us.index');
+Route::post('/transaction-us', [TransactionController::class, 'store'])->name('transaction-us.store');
+
+Route::resource('articles', ArticleController::class);
 
 Route::get('/about', function () {
     $title = 'About Us';
